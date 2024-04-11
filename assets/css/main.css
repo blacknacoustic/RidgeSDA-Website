@@ -3997,3 +3997,39 @@ input, select, textarea {
 	body.is-mobile.landing #footer {
 		background-color: #1d242a;
 	}
+/* Thumnails for Buliteen Page */
+
+.thumbnail {
+    width: 400px; /* Double the width */
+    height: 400px; /* Double the height */
+    border: 2px solid #000; /* Black border */
+    margin: 20px; /* Adjust margin as needed */
+    display: inline-block;
+    text-align: center; /* Center text horizontally */
+}
+
+.pdf-thumbnail {
+    padding-top: 20px; /* Adjust space between image and text */
+}
+
+.pdf-thumbnail img {
+    max-width: 100%; /* Ensure the image fits inside the container */
+    max-height: 100%; /* Set maximum height to 80% of container height */
+}
+
+.pdf-thumbnail h3 {
+    margin-top: 20px; /* Adjust space between image and text */
+    font-size: 1.5em; /* Adjust font size */
+}
+
+#video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ensure video container fills entire height of its parent */
+}
+
+#placeholder-video {
+    max-width: 100%;
+    max-height: 100%;
+}

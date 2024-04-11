@@ -11,17 +11,17 @@
 
     <!-- Header Section -->
     <header id="header">
-        <h1><a href="#">Video Page</a></h1>
+        <h1><a href="#">Watch Live</a></h1>
         <nav id="nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="watchlive.html">Watch Live</a></li>
                 <li><a href="aboutus.html">About Us</a></li>
                 <li><a href="elements.html">Elements</a></li>
                 <li><a href="pastorscorner.html">Pastor's Corner</a></li>
                 <li><a href="https://adventistgiving.org/donate/ANTTRI">Online Giving</a></li>
                 <li><a href="buliteen.html">View Previous Buliteens</a></li>					
-                <li><a href="#">Log In</a></li>
+                <li><a href="login.html">Log In</a></li> <!-- Added login link -->
+                <li><a href="register.html">Register Now</a></li>
                 <!-- Add more navigation links if needed -->
             </ul>
         </nav>
@@ -30,22 +30,47 @@
     <!-- Main Content Section -->
     <section id="main">
         <h2>Watch the Video</h2>
-        <!-- Replace 'your_video_link_here' with the actual link to your video -->
-        <div class="video-container">
-            <iframe width="560" height="315" src="your_video_link_here" frameborder="0" allowfullscreen></iframe>
+        <!-- Placeholder content for video player -->
+        <div id="video-container">
+            <!-- Default video to display when stream is offline -->
+            <video width="800" height="600" controls autoplay loop muted>
+                <source src="images/ridgestreamoffline.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
     </section>
+
     <footer id="footer">
         <ul class="icons">
             <li><a href="https://www.facebook.com/ridgesdachurch" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
             <li><a href="https://www.instagram.com/ridgeareasdachurch/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
             <li><a href="https://www.youtube.com/@RidgeAreaSDAChurch" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
             <li><a href="mailto:theridgesda@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-
         </ul>
         <ul class="copyright">
             <li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
         </ul>
     </footer>
+
+    <!-- JavaScript to handle live stream display
+    <script>
+        function checkStreamStatus() {
+            // Instead of checking stream status, directly embed the RTMP video player
+            const videoContainer = document.getElementById('video-container');
+            videoContainer.innerHTML = `
+                <object type="application/x-shockwave-flash" data="player.swf" width="560" height="315">
+                    <param name="movie" value="player.swf" />
+                    <param name="flashvars" value="file=your_rtmp_stream_url" />
+                </object>
+            `;
+        }
+    
+        // Check stream status every 10 seconds
+        setInterval(checkStreamStatus, 10000);
+    
+        // Initial check when the page loads
+        checkStreamStatus();
+    </script> -->
+    
 </body>
 </html>
