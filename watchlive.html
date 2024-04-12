@@ -19,7 +19,7 @@
                 <li><a href="elements.html">Elements</a></li>
                 <li><a href="pastorscorner.html">Pastor's Corner</a></li>
                 <li><a href="https://adventistgiving.org/donate/ANTTRI">Online Giving</a></li>
-                <li><a href="buliteen.html">View Previous Buliteens</a></li>					
+                <li><a href="buliteen.html">View Previous Bulletins</a></li>                  
                 <li><a href="login.html">Log In</a></li> <!-- Added login link -->
                 <li><a href="register.html">Register Now</a></li>
                 <!-- Add more navigation links if needed -->
@@ -33,7 +33,7 @@
         <!-- Placeholder content for video player -->
         <div id="video-container">
             <!-- Default video to display when stream is offline -->
-            <video width="800" height="600" controls autoplay loop muted>
+            <video id="video-player" width="800" height="600" controls autoplay loop muted>
                 <source src="images/ridgestreamoffline.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -52,25 +52,29 @@
         </ul>
     </footer>
 
-    <!-- JavaScript to handle live stream display
     <script>
-        function checkStreamStatus() {
-            // Instead of checking stream status, directly embed the RTMP video player
-            const videoContainer = document.getElementById('video-container');
-            videoContainer.innerHTML = `
-                <object type="application/x-shockwave-flash" data="player.swf" width="560" height="315">
-                    <param name="movie" value="player.swf" />
-                    <param name="flashvars" value="file=your_rtmp_stream_url" />
-                </object>
-            `;
+        // Function to switch player source when stream goes live
+        function switchToLiveStream() {
+            var video = document.getElementById("video-player");
+            // Change the source to the RTMP stream URL
+            video.src = "rtmp://10.0.0.74/live/test";
+            // Remove the "controls" attribute if you want to hide the player controls during streaming
+            video.removeAttribute("controls");
+            // Play the video
+            video.play();
         }
-    
-        // Check stream status every 10 seconds
-        setInterval(checkStreamStatus, 10000);
-    
-        // Initial check when the page loads
-        checkStreamStatus();
-    </script> -->
-    
+
+        // Check stream status and switch to live stream if available
+        function checkStreamStatus() {
+            // Perform an AJAX request to check stream status (replace with actual implementation)
+            var isStreamLive = false; // Example: true if stream is live, false otherwise
+            if (isStreamLive) {
+                switchToLiveStream();
+            }
+        }
+
+        // Check stream status periodically
+        setInterval(checkStreamStatus, 60000); // Check every minute (adjust as needed)
+    </script>
 </body>
 </html>
