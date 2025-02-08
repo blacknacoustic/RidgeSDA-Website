@@ -81,7 +81,7 @@
 
         // Function to check if the stream is live
         function checkStreamStatus() {
-            fetch("https://jollyprinter.duckdns.org:80/stat") // Replace with your Nginx RTMP stats page
+            fetch("https://jollyprinter.duckdns.org:443/stat") // Replace with your Nginx RTMP stats page
                 .then(response => response.text())
                 .then(data => {
                     if (data.includes("stream1")) { // Replace "stream1" with your stream key
