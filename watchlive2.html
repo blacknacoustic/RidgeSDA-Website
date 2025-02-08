@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ridge Area SDA Church</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- Add HLS.js for HLS stream support -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header id="header">
+        <h1><a href="#">Watch Live</a></h1>
+        <nav id="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="watchlive.html">Watch Live</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="pastorscorner.html">Pastor's Corner</a></li>
+                <li><a href="morethanthis.html">More Than This</a></li>											
+                <li><a href="https://adventistgiving.org/donate/ANTTRI">Online Giving</a></li>
+                <li><a href="buliteen.html">View Previous Bulletins</a></li>		
+                <li><a href="contactus.html">Contact Us</a></li>			
+                <li><a href="login.html">Log In</a></li> <!-- Added login link -->
+                <li><a href="register.html">Register Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <section id="main">
+        <h2>Watch the Video</h2>
+        <!-- Video player container -->
+        <div id="video-container">
+            <!-- Video player for HLS stream -->
+            <video id="video-player" width="800" height="600" controls autoplay muted>
+                <!-- Fallback video for when the stream is offline -->
+                <source src="images/ridgestreamoffline.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <ul class="icons">
+            <li><a href="https://www.facebook.com/ridgesdachurch" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+            <li><a href="https://www.instagram.com/ridgeareasdachurch/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="https://www.youtube.com/@RidgeAreaSDAChurch" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
+            <li><a href="mailto:theridgesda@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+        <ul class="copyright">
+            <li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        // Function to load the HLS stream
+        function loadHLSStream() {
+            var video = document.getElementById("video-player");
+            var hlsUrl = "rtmp://jollyprinter.duckdns.org/live/stream1.m3u8"; // Replace with your HLS URL
+
+            if (Hls.isSupported()) {
+                var hls = new Hls();
+                hls.loadSource(hlsUrl);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                    video.play();
+                });
+            } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+                // Native HLS support (Safari)
+                video.src = hlsUrl;
+                video.addEventListener("loadedmetadata", function () {
+                    video.play();
+                });
+            } else {
+                console.error("HLS is not supported in this browser.");
+            }
+        }
+
+        // Function to check if the stream is live
+        function checkStreamStatus() {
+            fetch("http://jollyprinter.duckdns.org:8080/stat") // Replace with your Nginx RTMP stats page
+                .then(response => response.text())
+                .then(data => {
+                    if (data.includes("stream1")) { // Replace "stream1" with your stream key
+                        loadHLSStream(); // Stream is live, load the HLS stream
+                    } else {
+                        console.log("Stream is offline.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error checking stream status:", error);
+                });
+        }
+
+        // Check stream status when the page loads
+        checkStreamStatus();
+
+        // Check stream status periodically (every 60 seconds)
+        setInterval(checkStreamStatus, 60000);
+    </script>
+</body>
+</html>
