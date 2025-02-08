@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ridge Area SDA Church</title>
     <link rel="stylesheet" href="assets/css/main.css">
-    <!-- Add any additional stylesheets or scripts as needed -->
 </head>
 <body>
 
@@ -31,13 +30,17 @@
     <!-- Main Content Section -->
     <section id="main">
         <h2>Watch the Video</h2>
-        <!-- Placeholder content for video player -->
+        <!-- Video player container -->
         <div id="video-container">
-            <!-- Default video to display when stream is offline -->
-            <video id="video-player" width="800" height="600" controls autoplay loop muted>
-                <source src="images/ridgestreamoffline.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            <!-- Owncast embed iframe -->
+            <iframe
+                src="https://jollyprinter.duckdns.org/embed/video"
+                width="800"
+                height="600"
+                frameborder="0"
+                allowfullscreen
+                autoplay>
+            </iframe>
         </div>
     </section>
 
@@ -52,30 +55,5 @@
             <li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
         </ul>
     </footer>
-
-    <script>
-        // Function to switch player source when stream goes live
-        function switchToLiveStream() {
-            var video = document.getElementById("video-player");
-            // Change the source to the RTMP stream URL
-            video.src = "rtmp://10.0.0.74/live/test";
-            // Remove the "controls" attribute if you want to hide the player controls during streaming
-            video.removeAttribute("controls");
-            // Play the video
-            video.play();
-        }
-
-        // Check stream status and switch to live stream if available
-        function checkStreamStatus() {
-            // Perform an AJAX request to check stream status (replace with actual implementation)
-            var isStreamLive = false; // Example: true if stream is live, false otherwise
-            if (isStreamLive) {
-                switchToLiveStream();
-            }
-        }
-
-        // Check stream status periodically
-        setInterval(checkStreamStatus, 60000); // Check every minute (adjust as needed)
-    </script>
 </body>
 </html>
