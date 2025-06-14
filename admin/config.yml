@@ -1,0 +1,35 @@
+backend:
+  name: github
+  repo: yourusername/RidgeSDA-Website  # <-- CHANGE THIS to your GitHub repo
+  branch: main  # or 'master' if that's your default
+
+media_folder: "assets/uploads"  # where images get saved in the repo
+public_folder: "/assets/uploads"  # how they are accessed in the browser
+
+collections:
+  - name: "pages"
+    label: "Website Pages"
+    files:
+      - label: "Home Page"
+        name: "index"
+        file: "index.html"
+        fields:
+          - { label: "Page Content", name: "body", widget: "markdown" }
+
+      - label: "About Us"
+        name: "aboutus"
+        file: "aboutus.html"
+        fields:
+          - { label: "Page Content", name: "body", widget: "markdown" }
+
+      - label: "Contact Us"
+        name: "contactus"
+        file: "contactus.html"
+        fields:
+          - { label: "Page Content", name: "body", widget: "markdown" }
+
+      - label: "Pastor's Corner"
+        name: "pastorscorner"
+        file: "pastorscorner.html"
+        fields:
+          - { label: "Page Content", name: "body", widget: "markdown" }
