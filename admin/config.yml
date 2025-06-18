@@ -1,8 +1,12 @@
+# backend:
+#   name: github
+#   repo: blacknacoustic/RidgeSDA-Website  # <-- CHANGE THIS to your GitHub repo
+#   branch: main  # or 'master' if that's your default
+#   auth_scope: repo
+
 backend:
-  name: github
-  repo: blacknacoustic/RidgeSDA-Website  # <-- CHANGE THIS to your GitHub repo
-  branch: main  # or 'master' if that's your default
-  auth_scope: repo
+  name: git-gateway
+
 
 media_folder: "assets/uploads"  # where images get saved in the repo
 public_folder: "/assets/uploads"  # how they are accessed in the browser
