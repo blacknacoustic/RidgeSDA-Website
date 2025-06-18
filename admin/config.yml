@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: yourusername/RidgeSDA-Website  # <-- CHANGE THIS to your GitHub repo
+  repo: blacknacoustic/RidgeSDA-Website  # <-- CHANGE THIS to your GitHub repo
   branch: main  # or 'master' if that's your default
 
 media_folder: "assets/uploads"  # where images get saved in the repo
